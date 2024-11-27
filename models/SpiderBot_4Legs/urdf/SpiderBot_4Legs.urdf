@@ -1,0 +1,246 @@
+<?xml version="1.0"?>
+<robot name="spider_robot">
+
+  <!-- Define the body (box) -->
+  <link name="body">
+    <visual>
+      <geometry>
+        <box size="1 1 0.5"/>
+      </geometry>
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="1 1 0.5"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1"/> <!-- Mass of the body -->
+      <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1"/>
+    </inertial>
+  </link>
+
+  <link name="leg1_thigh">
+    <visual>
+      <geometry>
+        <box size="0.2 0.2 0.5"/> <!-- Thigh dimensions -->
+      </geometry>
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.2 0.2 0.5"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.15"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <joint name="body_to_leg1_thigh" type="fixed">
+    <parent link="body"/>
+    <child link="leg1_thigh"/>
+    <origin xyz="0.5 0.5 0.5"/>
+  </joint>
+
+  <link name="leg1_shin">
+    <visual>
+      <geometry>
+        <box size="0.2 0.2 2"/> <!-- Shin dimensions -->
+      </geometry>
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+      <origin xyz="0.5 0 -0.7 " rpy="0 2.79253 0"/> <!-- Position of shin relative to thigh -->
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.2 0.2 2"/>
+      </geometry>
+      <origin xyz="0.5 0 -0.7 " rpy="0 2.79253 0"/> <!-- Position of shin relative to thigh -->
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+    </inertial>
+  </link>
+  
+  <joint name="leg1_thigh_to_shin" type="revolute">
+  <parent link="leg1_thigh"/>
+  <child link="leg1_shin"/>
+  <axis xyz="1 0 0"/> <!-- Rotation axis -->
+    <limit effort="100" velocity="1" lower="-0.785" upper="1.57"/>
+  </joint>
+
+  <link name="leg2_thigh">
+    <visual>
+      <geometry>
+        <box size="0.2 0.2 0.5"/>
+      </geometry>
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.2 0.2 0.5"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.15"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <joint name="body_to_leg2_thigh" type="fixed">
+    <parent link="body"/>
+    <child link="leg2_thigh"/>
+    <origin xyz="-0.5 0.5 0.5"/>
+  </joint>
+
+  <link name="leg2_shin">
+    <visual>
+      <geometry>
+        <box size="0.2 0.2 2"/>
+      </geometry>
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+      <origin xyz="-0.5 0 -0.7" rpy="0 -2.79253 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.2 0.2 2"/>
+      </geometry>
+      <origin xyz="-0.5 0 -0.7" rpy="0 -2.79253 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <joint name="leg2_thigh_to_shin" type="revolute">
+    <parent link="leg2_thigh"/>
+    <child link="leg2_shin"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="100" velocity="1" lower="-0.785" upper="1.57"/>
+  </joint>
+
+  <link name="leg3_thigh">
+    <visual>
+      <geometry>
+        <box size="0.2 0.2 0.5"/>
+      </geometry>
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.2 0.2 0.5"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.15"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <joint name="body_to_leg3_thigh" type="fixed">
+    <parent link="body"/>
+    <child link="leg3_thigh"/>
+    <origin xyz="-0.5 -0.5 0.5"/>
+  </joint>
+
+  <link name="leg3_shin">
+    <visual>
+      <geometry>
+        <box size="0.2 0.2 2"/>
+      </geometry>
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+      <origin xyz="-0.5 0 -0.7" rpy="0 -2.79253 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.2 0.2 2"/>
+      </geometry>
+      <origin xyz="-0.5 0 -0.7" rpy="0 -2.79253 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <joint name="leg3_thigh_to_shin" type="revolute">
+    <parent link="leg3_thigh"/>
+    <child link="leg3_shin"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="100" velocity="1" lower="-0.785" upper="1.57"/>
+  </joint>
+
+  <link name="leg4_thigh">
+    <visual>
+      <geometry>
+        <box size="0.2 0.2 0.5"/>
+      </geometry>
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.2 0.2 0.5"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.15"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <joint name="body_to_leg4_thigh" type="fixed">
+    <parent link="body"/>
+    <child link="leg4_thigh"/>
+    <origin xyz="0.5 -0.5 0.5"/>
+  </joint>
+
+  <link name="leg4_shin">
+    <visual>
+      <geometry>
+        <box size="0.2 0.2 2"/>
+      </geometry>
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+      <origin xyz="0.5 0 -0.7" rpy="0 2.79253 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.2 0.2 2"/>
+      </geometry>
+      <origin xyz="0.5 0 -0.7" rpy="0 2.79253 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <joint name="leg4_thigh_to_shin" type="revolute">
+    <parent link="leg4_thigh"/>
+    <child link="leg4_shin"/>
+    <!-- <origin xyz="0 0 0"/> -->
+    <axis xyz="1 0 0"/>
+    <limit effort="100" velocity="1" lower="-0.785" upper="1.57"/>
+  </joint>
+
+</robot>

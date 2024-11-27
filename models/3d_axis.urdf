@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<robot name='urdf_robot'>
+
+    <material name='red'>
+        <color rgba='1 0 0 0.5'/>
+    </material>
+
+    <material name='green'>
+        <color rgba='0 1 0 0.5'/>
+    </material>
+
+    <material name='blue'>
+        <color rgba='0 0 1 0.5'/>
+    </material>
+
+    <link name="base_link"/>
+
+    <!-- X-axis (Red) -->
+    <link name='x_axis'>
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <mass value="0.0"/>
+            <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+        </inertial>
+        <visual>
+            <geometry>
+                <cylinder length='1.0' radius='0.05'/>
+            </geometry>
+            <origin xyz='0.5 0 0' rpy='0 1.5708 0'/>
+            <material name='red'/>
+        </visual>
+        <collision>
+            <origin xyz='0.5 0 0' rpy='0 1.5708 0'/>
+            <geometry>
+                <cylinder length='1.0' radius='0.05'/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint_x_axis" type="fixed">
+        <parent link="base_link"/>
+        <child link="x_axis"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name='x_arrow'>
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <mass value="0.0"/>
+            <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+        </inertial>
+        <visual>
+            <geometry>
+                <sphere radius="0.05"/>
+            </geometry>
+            <origin xyz='0.5 0 0' rpy='0 1.5708 0'/>
+            <material name='red'/>
+        </visual>
+        <collision>
+            <origin xyz='0.5 0 0' rpy='0 1.5708 0'/>
+            <geometry>
+                <sphere radius="0.05"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint_x_arrow" type="fixed">
+        <parent link="x_axis"/>
+        <child link="x_arrow"/>
+        <origin xyz="0.5 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <!-- Y-axis (Green) -->
+    <link name='y_axis'>
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <mass value="0.0"/>
+            <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+        </inertial>
+        <visual>
+            <geometry>
+                <cylinder length='1.0' radius='0.05'/>
+            </geometry>
+            <origin xyz='0.0 0.5 0' rpy='1.5708 0 0'/>
+            <material name='green'/>
+        </visual>
+        <collision>
+            <origin xyz='0.0 0.5 0' rpy='1.5708 0 0'/>
+            <geometry>
+                <cylinder length='1.0' radius='0.05'/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint_y_axis" type="fixed">
+        <parent link="base_link"/>
+        <child link="y_axis"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name='y_arrow'>
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <mass value="0.0"/>
+            <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+        </inertial>
+        <visual>
+            <geometry>
+                <sphere radius="0.05"/>
+            </geometry>
+            <origin xyz='0.0 0.5 0' rpy='1.5708 0 0'/>
+            <material name='green'/>
+        </visual>
+        <collision>
+            <origin xyz='0.0 0.5 0' rpy='1.5708 0 0'/>
+            <geometry>
+                <sphere radius="0.05"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint_y_arrow" type="fixed">
+        <parent link="y_axis"/>
+        <child link="y_arrow"/>
+        <origin xyz="0.0 0.5 0" rpy="0 0 0"/>
+    </joint>
+
+    <!-- Z-axis (Blue) -->
+    <link name='z_axis'>
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <mass value="0.0"/>
+            <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+        </inertial>
+        <visual>
+            <geometry>
+                <cylinder length='1.0' radius='0.05'/>
+            </geometry>
+            <origin xyz='0.0 0.0 0.5' rpy='0 0 0'/>
+            <material name='blue'/>
+        </visual>
+        <collision>
+            <origin xyz='0.0 0.0 0.5' rpy='0 0 0'/>
+            <geometry>
+                <cylinder length='1.0' radius='0.05'/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint_z_axis" type="fixed">
+        <parent link="base_link"/>
+        <child link="z_axis"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name='z_arrow'>
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <mass value="0.0"/>
+            <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1"/>
+        </inertial>
+        <visual>
+            <geometry>
+                <sphere radius="0.05"/>
+            </geometry>
+            <origin xyz='0.0 0.0 0.5' rpy='0 0 0'/>
+            <material name='blue'/>
+        </visual>
+        <collision>
+            <origin xyz='0.0 0.0 0.5' rpy='0 0 0'/>
+            <geometry>
+                <sphere radius="0.05"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint_z_arrow" type="fixed">
+        <parent link="z_axis"/>
+        <child link="z_arrow"/>
+        <origin xyz="0.0 0.0 0.5" rpy="0 0 0"/>
+    </joint>
+</robot>
